@@ -10,3 +10,4 @@
 + router-路由
 + store-Vuex
 + common-公共类
++ assets-资源文件
