@@ -1,5 +1,5 @@
 # RECORD
-## INIT
+## Init
 ### 1. 设计目录结构
 + componets
     + common-公共的组件
@@ -12,6 +12,7 @@
 + store-Vuex
 + common-公共类
 + assets-资源文件
++ mock-测试
 
 ### 2. 初始化CSS样式
 > assets -> css -> @normalize.css :规范化样式
@@ -20,15 +21,16 @@
 ```javascript
 // 在vue.config.js中配置别名
 configureWebpack: {
-    resolve: {
-        alias:{
-            'assets':'@/assets',
-            'common':'@/common',
-            'components':'@/components',
-            'network':'@/network',
-            'views':'@/views'
-        }
+  resolve: {
+    alias:{
+      'assets': '@/assets',
+      'common': '@/common',
+      'components': '@/components',
+      'network': '@/network',
+      'views': '@/views',
+      'mock': '@/mock'
     }
+  }
 }
 ```
 ### 4.统一代码风格
@@ -45,9 +47,10 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 ```
 
-## 组件
+## Components
 ### TabBar
 use the TabBar
+src : components -> common -> tabbar
 ```javascript
 import TabBar from 'tabbar/TabBar.vue';
 import TabBarItem from 'tabbar/TabBarItem.vue';
@@ -60,4 +63,10 @@ import TabBarItem from 'tabbar/TabBarItem.vue';
     <div slot="item-text">类目</div>
   </tab-bar-item>
 </tab-bar>
+```
+### Swipe
+> vant-ui -> swipe
+src : views -> home -> childComps
+```javascript
+import { Swipe, SwipeItem } from 'vant'
 ```

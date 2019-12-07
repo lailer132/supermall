@@ -20,16 +20,6 @@
       <img slot="item-icon-active" src="~assets/img/tabbar/profile-active.svg" alt="">
       <div slot="item-text">我的</div>
     </tab-bar-item>
-    <tab-bar-item path="/profile"  activeColor="#d81e06">
-      <img slot="item-icon" src="~assets/img/tabbar/profile.svg" alt="">
-      <img slot="item-icon-active" src="~assets/img/tabbar/profile-active.svg" alt="">
-      <div slot="item-text">我的</div>
-    </tab-bar-item>
-    <tab-bar-item path="/profile"  activeColor="#d81e06">
-      <img slot="item-icon" src="~assets/img/tabbar/profile.svg" alt="">
-      <img slot="item-icon-active" src="~assets/img/tabbar/profile-active.svg" alt="">
-      <div slot="item-text">我的</div>
-    </tab-bar-item>
   </tab-bar>
 </template>
 

@@ -37,6 +37,7 @@ export default {
   },
   methods: {
     itemClick() {
+      this.$route.path === this.path ? '' :
       this.$router.replace(this.path)
     }
   }
@@ -49,10 +50,10 @@ export default {
   text-align: center;
   height: 49px;
   font-size: 14px;
+  color:#888888;
   // font-weight: 500;
   img {
     margin-top: 3px;
-    vertical-align: middle;
     width: 24px;
     height: 24px;
   }

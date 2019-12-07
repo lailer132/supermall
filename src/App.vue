@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
     <main-tab-bar/>
   </div>
 </template>
@@ -10,11 +12,14 @@ import MainTabBar from 'components/content/MainTabBar.vue'
 export default {
   name: 'app',
   components: {
-    MainTabBar
+    MainTabBar,
   }
 }
 </script>
 
 <style scoped lang="scss">
   @import "assets/css/base.css";
+  #app{
+    height: 100vh;
+  }
 </style>
