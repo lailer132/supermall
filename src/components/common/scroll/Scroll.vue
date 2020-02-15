@@ -34,6 +34,7 @@ export default {
       this.scroll && this.scroll.finishPullUp()
     },
     refresh() {
+      console.log('refresh')
       this.scroll && this.scroll.refresh()
     },
     getScrollY() {
@@ -57,7 +58,7 @@ export default {
     // 3.监听上拉事件
     if(this.pullUpLoad){
       this.scroll.on('pullingUp', () => {
-        // console.log('上拉加载更多')
+        console.log('上拉加载更多')
         this.$emit('pullingUp')
       })
     }

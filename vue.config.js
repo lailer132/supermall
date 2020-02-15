@@ -2,7 +2,7 @@ module.exports = {
   publicPath: './',
   configureWebpack: {
     resolve: {
-      alias:{
+      alias: {
         'assets': '@/assets',
         'common': '@/common',
         'components': '@/components',

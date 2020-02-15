@@ -11,3 +11,10 @@
   font-size: 16px;
   /* overflow: hidden; */
 }
+.van-stepper__input[disabled] {
+  color: #323232 !important;
+}
+.van-dialog__confirm,
+.van-dialog__confirm:active {
+  color: #d81e06 !important;
+}

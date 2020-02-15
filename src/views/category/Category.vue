@@ -1,135 +1,153 @@
 <template>
-  <div class="wrapper">
-    <ul class="content">
-      <li>分类列表1</li>
-      <li>分类列表2</li>
-      <li>分类列表3</li>
-      <li>分类列表4</li>
-      <li>分类列表5</li>
-      <li>分类列表6</li>
-      <li>分类列表7</li>
-      <li>分类列表8</li>
-      <li>分类列表9</li>
-      <li>分类列表10</li>
-      <li>分类列表11</li>
-      <li>分类列表12</li>
-      <li>分类列表13</li>
-      <li>分类列表14</li>
-      <li>分类列表15</li>
-      <li>分类列表16</li>
-      <li>分类列表17</li>
-      <li>分类列表18</li>
-      <li>分类列表19</li>
-      <li>分类列表20</li>
-      <li>分类列表21</li>
-      <li>分类列表22</li>
-      <li>分类列表23</li>
-      <li>分类列表24</li>
-      <li>分类列表25</li>
-      <li>分类列表26</li>
-      <li>分类列表27</li>
-      <li>分类列表28</li>
-      <li>分类列表29</li>
-      <li>分类列表30</li>
-      <li>分类列表31</li>
-      <li>分类列表32</li>
-      <li>分类列表33</li>
-      <li>分类列表34</li>
-      <li>分类列表35</li>
-      <li>分类列表36</li>
-      <li>分类列表37</li>
-      <li>分类列表38</li>
-      <li>分类列表39</li>
-      <li>分类列表40</li>
-      <li>分类列表41</li>
-      <li>分类列表42</li>
-      <li>分类列表43</li>
-      <li>分类列表44</li>
-      <li>分类列表45</li>
-      <li>分类列表46</li>
-      <li>分类列表47</li>
-      <li>分类列表48</li>
-      <li>分类列表49</li>
-      <li>分类列表50</li>
-      <li>分类列表51</li>
-      <li>分类列表52</li>
-      <li>分类列表53</li>
-      <li>分类列表54</li>
-      <li>分类列表55</li>
-      <li>分类列表56</li>
-      <li>分类列表57</li>
-      <li>分类列表58</li>
-      <li>分类列表59</li>
-      <li>分类列表60</li>
-      <li>分类列表61</li>
-      <li>分类列表62</li>
-      <li>分类列表63</li>
-      <li>分类列表64</li>
-      <li>分类列表65</li>
-      <li>分类列表66</li>
-      <li>分类列表67</li>
-      <li>分类列表68</li>
-      <li>分类列表69</li>
-      <li>分类列表70</li>
-      <li>分类列表71</li>
-      <li>分类列表72</li>
-      <li>分类列表73</li>
-      <li>分类列表74</li>
-      <li>分类列表75</li>
-      <li>分类列表76</li>
-      <li>分类列表77</li>
-      <li>分类列表78</li>
-      <li>分类列表79</li>
-      <li>分类列表80</li>
-      <li>分类列表81</li>
-      <li>分类列表82</li>
-      <li>分类列表83</li>
-      <li>分类列表84</li>
-      <li>分类列表85</li>
-      <li>分类列表86</li>
-      <li>分类列表87</li>
-      <li>分类列表88</li>
-      <li>分类列表89</li>
-      <li>分类列表90</li>
-      <li>分类列表91</li>
-      <li>分类列表92</li>
-      <li>分类列表93</li>
-      <li>分类列表94</li>
-      <li>分类列表95</li>
-      <li>分类列表96</li>
-      <li>分类列表97</li>
-      <li>分类列表98</li>
-      <li>分类列表99</li>
-      <li>分类列表100</li>
-    </ul>
+  <div id="category">
+    <nav-bar class="category-nav">
+      <div slot="center">分类</div>
+    </nav-bar>
+    <div class="content">
+      <div class="left">
+        <div class="sidebar-class">
+          <sidebar v-model="activeKey">
+            <sidebar-item v-for="(item,i) in goodsClass" :key="i" :title="item.cname" @click="backClick"/>
+          </sidebar>
+        </div>
+      </div>
+      <div class="main">
+        <div style="height:100%; width:100%; text-align:center; margin-top:60px" v-if="!isLoad">
+          <loading size="36px">加载中...</loading>
+        </div>
+        <scroll class="content-scroll" ref="scroll" :probe-type="3" v-show="isLoad">
+          <div class="content-header">
+            <img :src="goodsClass[activeKey].titleImage" alt="" @load="isLoadSuccsee">
+          </div>
+          <divider :style="{ color: '#323233', borderColor: '#323233', padding: '0 16px' }">类别</divider>
+          <grid :clickable="true" :gutter="6" :column-num="3" :border="false">
+            <grid-item v-for="(item,i) in goodsClass[activeKey].classItem" :key="i">
+              <images :src="item.imageSrc" />
+              <span>{{item.title}}</span>
+            </grid-item>
+          </grid>
+          <divider :style="{ color: '#323233', borderColor: '#323233', padding: '0 16px' }">推荐</divider>
+          <goods-list ref="recommend" class="goods-list" :goods="showGoods" />
+        </scroll>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import BScroll from 'better-scroll'
+import Scroll from "components/common/scroll/Scroll";
+
+import NavBar from "components/common/navbar/NavBar";
+import { Sidebar, SidebarItem } from "vant";
+import { Grid, GridItem, Image } from "vant";
+import { Divider, Loading } from "vant";
+import GoodsList from "components/content/goods/GoodsList";
+
+import { getDetailGoodsData } from "network/detail";
+import { getGoodsClassData } from "network/category";
 export default {
   name: "Category",
   data() {
     return {
-      content: null
-    }
+      showGoods: [],
+      goodsClass: [
+        {classItem:null}
+      ],
+      activeKey: 0,
+      isLoad: false
+    };
+  },
+  components: {
+    NavBar,
+    Sidebar,
+    SidebarItem,
+    Grid,
+    GridItem,
+    Images: Image,
+    GoodsList,
+    Divider,
+    Scroll,
+    Loading
   },
   created() {
+    getDetailGoodsData().then(res => {
+      this.showGoods = res;
+    });
+    getGoodsClassData().then(res => {
+      this.goodsClass = res;
+    });
   },
-  mounted() {
-    new BScroll('.wrapper',{
-
-    })
-
+  activated() {
+    console.log("activated");
+    this.$refs.scroll.refresh()
+  },
+  deactivated() {
+    console.log("deactivated");
+  },
+  destroyed() {
+    console.log("destroyed");
+  },
+  mounted() {},
+  methods: {
+    backClick() {
+      this.$refs.scroll.scrollTo(0, 0)
+    },
+    isLoadSuccsee() {
+      this.isLoad = true;
+    }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-  .wrapper{
-    height: 150px;
-    background-color: red;
-    overflow: hidden;
-    // overflow-y: scroll;
+#category {
+  height: calc(100% - 44px);
+  // padding: 44px 0 44px 0;
+  overflow: hidden;
+  padding-top: 44px;
+}
+.category-nav {
+  background-color: #d81e06;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+.content {
+  display: flex;
+  height: calc(100% - 49px);
+  flex-direction: row;
+  .left {
+    height: 100%;
+    width: 105px;
+    background-color: #fafafa;
+    overflow:hidden;
+    .sidebar-class {
+      height: 100%;
+      width: calc(100% + 12px);
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
   }
+  .main {
+    width: 100%;
+  }
+  .content-scroll {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: #FFF;
+    .content-header {
+      width: 100%;
+      text-align: center;
+      padding-top: 12px;
+      img {
+        width: 86%;
+        border-radius: 10px;
+      }
+    }
+  }
+}
 </style>

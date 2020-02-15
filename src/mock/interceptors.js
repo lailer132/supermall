@@ -7,13 +7,23 @@ export default function(){
 
   Mock.mock('/home/recommendsdata',/post|get/i,homeData.recommendsData)
 
+  Mock.mock('/home/goodsClass',/post|get/i,contentData.goodsClassData.goodsClass)
+
   Mock.mock('/home/goodsdata',/post|get/i, function(options){
-    let queryType = JSON.parse(options.body)
+    let query = JSON.parse(options.body)
     let params =
-    queryType.type === 'pop' ? 'cfav' :
-    queryType.type === 'new' ? 'id' : 'sales'
+    query.type === 'pop' ? 'cfav' :
+    query.type === 'new' ? 'id' : 'sales'
     let goodsData = MockPatch.ascfn(params, contentData.goodsData.goods)
-    let resultData = MockPatch.goPage(goodsData, queryType.page, 10)
+    let resultData = MockPatch.goPage(goodsData, query.page, 10)
     return resultData;
+  });
+
+  Mock.mock('/detail/goodsdata',/post|get/i, contentData.goodsData.goods);
+
+  Mock.mock('/detail',/post|get/i, function(options){
+    let query = JSON.parse(options.body)
+    let goodsData = MockPatch.getGoodsIdMs(contentData.goodsData.goods, query.id)
+    return goodsData;
   });
 }
