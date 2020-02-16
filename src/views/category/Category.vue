@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="main">
-        <div style="height:100%; width:100%; text-align:center; margin-top:60px" v-if="!isLoad">
+        <div style="height:100%; width:100%; text-align:center; margin-top:60px" v-show="!isLoad">
           <loading size="36px">加载中...</loading>
         </div>
         <scroll class="content-scroll" ref="scroll" :probe-type="3" v-show="isLoad">
