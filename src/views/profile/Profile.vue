@@ -3,7 +3,7 @@
     <!-- 头部登录 -->
     <div class="header">
       <div class="user_box_img">
-        <img src="~assets/img/profile/用户.svg" alt />
+        <img src="~assets/img/profile/user.svg" alt />
       </div>
       <span>登录/注册</span>
     </div>
@@ -20,15 +20,15 @@
       <!-- 订单处理 -->
       <div class="PayTextView">
         <div class="item">
-          <img src="~assets/img/profile/待付款.svg" alt />
+          <img src="~assets/img/profile/payment.svg" alt />
           <p>待付款</p>
         </div>
         <div class="item">
-          <img src="~assets/img/profile/待收货.svg" alt />
+          <img src="~assets/img/profile/received.svg" alt />
           <p>待收货</p>
         </div>
         <div class="item">
-          <img src="~assets/img/profile/退还修.svg" alt />
+          <img src="~assets/img/profile/exchange.svg" alt />
           <p>退还修</p>
         </div>
       </div>
@@ -36,7 +36,7 @@
       <div class="UsersTextView content-view">
         <div class="item">
           <div class="title">
-            <img src="~assets/img/profile/会员福利.svg" alt />
+            <img src="~assets/img/profile/vip.svg" alt />
             <span>会员福利</span>
           </div>
           <div class="details">
@@ -45,7 +45,7 @@
         </div>
         <div class="item">
           <div class="title">
-            <img src="~assets/img/profile/我的优惠.svg" alt />
+            <img src="~assets/img/profile/discount.svg" alt />
             <span>我的优惠</span>
           </div>
           <div class="details">
@@ -57,7 +57,7 @@
       <div class="ServeTextView content-view">
         <div class="item">
           <div class="title">
-            <img src="~assets/img/profile/服务中心.svg" alt />
+            <img src="~assets/img/profile/serve.svg" alt />
             <span>服务中心</span>
           </div>
           <div class="details">
@@ -66,7 +66,7 @@
         </div>
         <div class="item">
           <div class="title">
-            <img src="~assets/img/profile/线下商铺.svg" alt />
+            <img src="~assets/img/profile/shop.svg" alt />
             <span>线下商铺</span>
           </div>
           <div class="details">
@@ -78,7 +78,7 @@
       <div class="SettleTextView content-view">
         <div class="item">
           <div class="title">
-            <img src="~assets/img/profile/绿色通道.svg" alt />
+            <img src="~assets/img/profile/green.svg" alt />
             <span>绿色通道</span>
           </div>
           <div class="details">
@@ -87,7 +87,7 @@
         </div>
         <div class="item">
           <div class="title">
-            <img src="~assets/img/profile/设置.svg" alt />
+            <img src="~assets/img/profile/setting.svg" alt />
             <span>设置</span>
           </div>
           <div class="details">

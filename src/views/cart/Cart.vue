@@ -7,7 +7,7 @@
       <div class="isNull" v-show="cartLength === 0">
         <img src="~assets/img/cart/cartIsNull.png" />
         <h3>购物车竟然是空的</h3>
-        <p>在忙，也要记得买点什么犒劳自己~</p>
+        <p>再忙，也要记得买点什么犒劳自己~</p>
         <vant-button plain hairline type="warning" to="/category">去逛逛</vant-button>
       </div>
       <div class="product-item" v-for="(item, index) in cartList" :key="index">
