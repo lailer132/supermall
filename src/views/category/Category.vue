@@ -7,27 +7,34 @@
       <div class="left">
         <div class="sidebar-class">
           <sidebar v-model="activeKey">
-            <sidebar-item v-for="(item,i) in goodsClass" :key="i" :title="item.cname" @click="backClick"/>
+            <sidebar-item
+              v-for="(item,i) in goodsClass"
+              :key="i"
+              :title="item.cname"
+              @click="backClick"
+            />
           </sidebar>
         </div>
       </div>
       <div class="main">
-        <div style="height:100%; width:100%; text-align:center; margin-top:60px" v-show="!isLoad">
-          <loading size="36px">加载中...</loading>
-        </div>
-        <scroll class="content-scroll" ref="scroll" :probe-type="3" v-show="isLoad">
-          <div class="content-header">
-            <img :src="goodsClass[activeKey].titleImage" alt="" @load="isLoadSuccsee">
+        <scroll class="content-scroll" ref="scroll" :probe-type="3">
+          <div style="height:100%; width:100%; text-align:center; margin-top:60px" v-show="!isLoad">
+            <loading size="36px">加载中...</loading>
           </div>
-          <divider :style="{ color: '#323233', borderColor: '#323233', padding: '0 16px' }">类别</divider>
-          <grid :clickable="true" :gutter="6" :column-num="3" :border="false">
-            <grid-item v-for="(item,i) in goodsClass[activeKey].classItem" :key="i">
-              <images :src="item.imageSrc" />
-              <span>{{item.title}}</span>
-            </grid-item>
-          </grid>
-          <divider :style="{ color: '#323233', borderColor: '#323233', padding: '0 16px' }">推荐</divider>
-          <goods-list ref="recommend" class="goods-list" :goods="showGoods" />
+          <div v-show="isLoad">
+            <div class="content-header">
+              <img :src="goodsClass[activeKey].titleImage" alt @load="isLoadSuccsee" />
+            </div>
+            <divider :style="{ color: '#323233', borderColor: '#323233', padding: '0 16px' }">类别</divider>
+            <grid :clickable="true" :gutter="6" :column-num="3" :border="false">
+              <grid-item v-for="(item,i) in goodsClass[activeKey].classItem" :key="i">
+                <images :src="item.imageSrc" />
+                <span>{{item.title}}</span>
+              </grid-item>
+            </grid>
+            <divider :style="{ color: '#323233', borderColor: '#323233', padding: '0 16px' }">推荐</divider>
+            <goods-list ref="recommend" class="goods-list" :goods="showGoods" />
+          </div>
         </scroll>
       </div>
     </div>
@@ -50,9 +57,7 @@ export default {
   data() {
     return {
       showGoods: [],
-      goodsClass: [
-        {classItem:null}
-      ],
+      goodsClass: [{ classItem: null }],
       activeKey: 0,
       isLoad: false
     };
@@ -79,7 +84,7 @@ export default {
   },
   activated() {
     console.log("activated");
-    this.$refs.scroll.refresh()
+    this.$refs.scroll.refresh();
   },
   deactivated() {
     console.log("deactivated");
@@ -90,7 +95,7 @@ export default {
   mounted() {},
   methods: {
     backClick() {
-      this.$refs.scroll.scrollTo(0, 0)
+      this.$refs.scroll.scrollTo(0, 0);
     },
     isLoadSuccsee() {
       this.isLoad = true;
@@ -123,7 +128,7 @@ export default {
     height: 100%;
     width: 105px;
     background-color: #fafafa;
-    overflow:hidden;
+    overflow: hidden;
     .sidebar-class {
       height: 100%;
       width: calc(100% + 12px);
@@ -138,7 +143,7 @@ export default {
     overflow: hidden;
     width: 100%;
     height: 100%;
-    background-color: #FFF;
+    background-color: #fff;
     .content-header {
       width: 100%;
       text-align: center;
